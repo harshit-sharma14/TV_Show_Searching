@@ -2,41 +2,6 @@ const explore=document.querySelector('#Explore');
 explore.addEventListener('click',function(){
     search_r.scrollIntoView({behavior:"smooth"})
 })
-const comedyimages= async function(){
-    let i=1;
-    
-    
-    while(i<=10){
-        let j=i-1;
-        const res=await axios.get(`https://api.tvmaze.com/shows/${i}`);
-        
-        
-        const conatinerofimg=document.querySelectorAll('.img1');
-        const onecontainer=conatinerofimg[j];
-        const picture=document.createElement('img');
-        const overlay=document.querySelectorAll('.overlay_img');
-        const one_overlay=overlay[j];
-        const overflow_h1=document.querySelectorAll('.overflow_h1');
-        const one_overflow_h1=overflow_h1[j];
-         one_overflow_h1.innerText=res.data.name;
-        picture.src=res.data.image.medium;
-        console.log(picture.src);
-        
-        if(picture.src){
-            one_overlay.append(one_overflow_h1);
-            onecontainer.append(one_overlay);
-            
-        onecontainer.append(picture);
-        
-        i++;
-    }
-        else{
-            console.log("Errorror");
-            continue;
-        }
-
-     }
-}
 
 const forms=document.querySelector('#Hi');
 const img_container=document.querySelector('.container');
@@ -126,26 +91,27 @@ async function cast_func(t) {
     let c = a.data;
     let b = "";
     for (let i = 0; i < 10 && i < c.length; i++) {
-        b = b + c[i].person.name + ", ";  // Add a space to separate names
+        b = b + c[i].person.name + ", "; 
     }
     
-    return b;  // Optional: return the concatenated string if needed
+    return b;  
 }
 
 function create(t,genre_no){
-    // console.log(t);
+    
     let imgurl=false;
     if(t.image){
         imgurl=t.image.medium;
     }
     
     
-    if(imgurl){// img.src=imgurl;
+    if(imgurl){
         const screen_content=document.querySelector('.screen_content');
         const screen=document.querySelector('.screen');
         const nav=document.querySelector('.nav');
         const one=document.querySelector('.one');
         const two=document.querySelector('.two');
+        const credit=document.querySelector('.credit');
         const three=document.querySelector('.three');
         const img=document.createElement('IMG');
         img.src=imgurl;
@@ -228,7 +194,8 @@ function create(t,genre_no){
         content.append(p);
         // comedy.append(div);
         if(genre_no==0){
-            screen.style.display='auto';
+            screen.style.display='70vw';
+            credit.style.display='none';
             screen_content.style.display='none';
             search_r.style.height='auto';
             comedy.style.height='0%';
@@ -238,7 +205,7 @@ function create(t,genre_no){
             one.style.display='none';
             two.style.display='none';
             three.style.display='none';
-            nav.style.background='linear-gradient(to right, #0505de, #676666)';
+            nav.style.background=' linear-gradient(to right, #0033ff, #ef6c00)';
             nav.style.borderBottom='2px solid white';
             
 
