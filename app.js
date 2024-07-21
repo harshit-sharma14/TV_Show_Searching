@@ -114,6 +114,7 @@ function create(t,genre_no){
         const credit=document.querySelector('.credit');
         const three=document.querySelector('.three');
         const img=document.createElement('IMG');
+        const creditspan=document.querySelector('#creditspan')
         img.src=imgurl;
         const body=document.querySelector('body');
         const summary_heading=document.createElement('h1');
@@ -194,8 +195,9 @@ function create(t,genre_no){
         content.append(p);
         // comedy.append(div);
         if(genre_no==0){
-            screen.style.display='70vw';
+            screen.style.height='auto';
             credit.style.display='none';
+            creditspan.style.display='none';
             screen_content.style.display='none';
             search_r.style.height='auto';
             comedy.style.height='0%';
